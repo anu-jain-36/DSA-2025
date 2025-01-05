@@ -73,7 +73,7 @@ int main()
     root= insert (root,8);
     root= insert (root,40);
    
-    bool found= search(root, 100);
+    bool found= search(root, 7);
     inorder(root);
     cout<<"element found is"<< found;
     return 0;
