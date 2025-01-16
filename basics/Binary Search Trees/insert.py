@@ -24,7 +24,7 @@ def inorder(root):
 def main():
     root = Node(50)
     insert(root, 35)
-    insert(root,97)
+    insert(root,97) 
     insert(root,10)
     insert(root,20)
     insert(root,65)
