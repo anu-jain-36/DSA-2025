@@ -78,6 +78,12 @@ def main():
     print("successor of 80 is ",s.val)
     s = successor(root, 600)
     print("successor of 600 is ",s.val)
+    s = successor(root, 700)
+    if s:
+        print("successor of s is ",s.val)
+    else:
+        print("successor not found, must be the largest number")
+          
 
 if __name__=="__main__":
     main()
