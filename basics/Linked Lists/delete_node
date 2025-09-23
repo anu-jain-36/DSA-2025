@@ -1,0 +1,82 @@
+#Definition for singly-linked list.
+
+from typing import Optional
+
+
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+        dummy = ListNode(-1)
+        dummy.next = head
+
+        curr = dummy
+        while curr.next != None:
+            if curr.next.val == val:
+                curr.next = curr.next.next
+            else:
+                curr = curr.next
+        return dummy.next 
+
+def create_linked_list(values):
+    if not values:
+        return None
+    
+    head = ListNode(values[0])
+    current = head
+    
+    for val in values[1:]:
+        current.next = ListNode(val)
+        current = current.next
+    
+    return head
+
+def print_linked_list(head):
+    """Helper function to print the linked list"""
+    result = []
+    current = head
+    while current:
+        result.append(str(current.val))
+        current = current.next
+    return " -> ".join(result) if result else "Empty list"
+
+if __name__ == "__main__":
+    solution = Solution()
+    
+    # Test case 1: Remove all occurrences of 6
+    print("Test case 1:")
+    values1 = [1, 2, 6, 3, 4, 5, 6]
+    head1 = create_linked_list(values1)
+    print(f"Original list: {print_linked_list(head1)}")
+    
+    result1 = solution.removeElements(head1, 6)
+    print(f"After removing 6: {print_linked_list(result1)}")
+    
+    # Test case 2: Remove all occurrences of 1
+    print("\nTest case 2:")
+    values2 = [7, 7, 7, 7]
+    head2 = create_linked_list(values2)
+    print(f"Original list: {print_linked_list(head2)}")
+    
+    result2 = solution.removeElements(head2, 7)
+    print(f"After removing 7: {print_linked_list(result2)}")
+    
+    # Test case 3: Remove from single element list
+    print("\nTest case 3:")
+    values3 = [1]
+    head3 = create_linked_list(values3)
+    print(f"Original list: {print_linked_list(head3)}")
+    
+    result3 = solution.removeElements(head3, 1)
+    print(f"After removing 1: {print_linked_list(result3)}")
+    
+    # Test case 4: Remove element not in list
+    print("\nTest case 4:")
+    values4 = [1, 2, 3, 4]
+    head4 = create_linked_list(values4)
+    print(f"Original list: {print_linked_list(head4)}")
+    
+    result4 = solution.removeElements(head4, 5)
+    print(f"After removing 5: {print_linked_list(result4)}")
